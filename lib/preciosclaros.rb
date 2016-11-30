@@ -19,8 +19,12 @@ class PreciosClaros
     end
   end
 
-  def self.obtener_sucursales(empresa)
-    query = { 'comercio_bandera_nombre' => '["'+empresa+'"]'}
+  def self.obtener_sucursales(empresa, offset=0, limit=50)
+    query = {
+      'comercio_bandera_nombre' => '["'+empresa+'"]',
+      'offset' => offset,
+      'limit' => limit
+    }
     begin
       HTTParty.get(BASE_API_URL+SUCURSALES_API_ENDPOINT, headers: DEFAULT_HEADERS, query: query)
     rescue HTTParty::Error => e

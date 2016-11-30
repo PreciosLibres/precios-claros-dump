@@ -29,10 +29,13 @@ empresas.each_with_index do |empresa, index|
     puts "[#{Time.now}] ERROR! Algo ocurrió al intentar guardar la información de '#{empresa}' en la base de datos."
   end
 
-  sucursales = PreciosClaros.obtener_sucursales(empresa)
-  puts "[#{Time.now}] La empresa #{empresa} tiene un total de #{sucursales['total']} sucursale(s)"
+  total_sucursales = PreciosClaros.obtener_sucursales(empresa)['total']
+  puts "[#{Time.now}] La empresa #{empresa} tiene un total de #{total_sucursales} sucursale(s)"
 
-  sucursales['sucursales'].each do |sucursal|
+  (total_sucursales.to_i/50).times do |i|
+    sucursales = PreciosClaros.obtener_sucursales(empresa, i*50)
+
+    sucursales['sucursales'].each do |sucursal|
     puts "[#{Time.now}] Scrappeando productos de la sucursal: '#{sucursal['sucursalNombre']}'..."
 
     begin
@@ -61,6 +64,7 @@ empresas.each_with_index do |empresa, index|
 
       puts "[#{Time.now}] Fin de página ##{i+1}...."
     end
+  end
   end
 end
 
