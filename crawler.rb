@@ -32,8 +32,8 @@ empresas.each_with_index do |empresa, index|
   total_sucursales = PreciosClaros.obtener_sucursales(empresa)['total']
   puts "[#{Time.now}] La empresa #{empresa} tiene un total de #{total_sucursales} sucursale(s)"
 
-  (total_sucursales.to_i/50).times do |i|
-    sucursales = PreciosClaros.obtener_sucursales(empresa, i*50)
+  (total_sucursales.to_i/100).times do |i|
+    sucursales = PreciosClaros.obtener_sucursales(empresa, i*100)
 
     sucursales['sucursales'].each do |sucursal|
     puts "[#{Time.now}] Scrappeando productos de la sucursal: '#{sucursal['sucursalNombre']}'..."
@@ -48,14 +48,15 @@ empresas.each_with_index do |empresa, index|
     total_productos = PreciosClaros.obtener_productos(sucursal['id'])['total']
     puts "[#{Time.now}] la sucursal tiene un total de: #{total_productos} producto(s)."
 
-    (total_productos.to_i/50).times do |i|
-      productos = PreciosClaros.obtener_productos(sucursal['id'], i*50)
+    (total_productos.to_i/100).times do |i|
+      productos = PreciosClaros.obtener_productos(sucursal['id'], i*100)
 
       puts "[#{Time.now}] Guardando productos de la página ##{i+1}...."
 
       productos['productos'].each do |producto|
         begin
           puts "[#{Time.now}] Guardando información del producto: #{producto['nombre']} en la base de datos."
+          producto['sucursalId'] = sucursal['id']
           HTTParty.post(BASE_DB_URL+PRODUCTOS_DB_ENDPOINT, body: producto.to_json, headers: DB_QUERY_HEADERS)
         rescue
           puts "[#{Time.now}] ERROR! Algo ocurrió al intentar guardar la información del producto '#{producto}' en la base de datos."

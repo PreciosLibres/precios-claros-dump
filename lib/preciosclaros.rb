@@ -19,7 +19,7 @@ class PreciosClaros
     end
   end
 
-  def self.obtener_sucursales(empresa, offset=0, limit=50)
+  def self.obtener_sucursales(empresa, offset=0, limit=100)
     query = {
       'comercio_bandera_nombre' => '["'+empresa+'"]',
       'offset' => offset,
@@ -33,9 +33,9 @@ class PreciosClaros
     end
   end
 
-  def self.obtener_productos(sucursal, offset=0, limit=50)
+  def self.obtener_productos(sucursal, offset=0, limit=100)
     query = {
-      'array_sucursales' => sucursal,
+      'id_sucursal' => sucursal,
       'offset' => offset,
       'limit' => limit
     }
