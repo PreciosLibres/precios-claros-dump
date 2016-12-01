@@ -1,0 +1,2 @@
+scrappy
+git+https://github.com/martinsbalodis/scrapy-couchdb.git
