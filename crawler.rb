@@ -51,7 +51,7 @@ empresas.each_with_index do |empresa, index|
     (total_productos.to_i/100).times do |i|
       productos = PreciosClaros.obtener_productos(sucursal['id'], i*100)
 
-      puts "[#{Time.now}] Guardando productos de la página ##{i+1}...."
+      puts "[#{Time.now}] Guardando productos de la página #{i+1}/#{(total_productos.to_i/100)}..."
 
       productos['productos'].each do |producto|
         begin
@@ -63,7 +63,7 @@ empresas.each_with_index do |empresa, index|
         end
       end
 
-      puts "[#{Time.now}] Fin de página ##{i+1}...."
+      puts "[#{Time.now}] Fin de página: #{i+1}/#{(total_productos.to_i/100)}..."
     end
   end
   end
