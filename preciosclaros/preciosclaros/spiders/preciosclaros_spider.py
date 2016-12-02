@@ -29,7 +29,7 @@ class PreciosClarosSpider(scrapy.Spider):
         total = json.loads(response.body_as_unicode())['total']
         if total > 1:
             for index in range(2, int(math.ceil(total/100.))):
-                sucursales_url = BASE_URL + 'sucursales?limit=100&offset=' + str(index) + '&comercio_bandera_nombre=["' + urllib.quote_plus(response.meta['empresa_nombre']) + '"]'
+                sucursales_url = BASE_URL + 'sucursales?limit=100&offset=' + str(index * 100) + '&comercio_bandera_nombre=["' + urllib.quote_plus(response.meta['empresa_nombre']) + '"]'
                 yield scrapy.Request(sucursales_url, callback=self.parse_content_sucursales)
 
     def parse_content_sucursales(self, response):
