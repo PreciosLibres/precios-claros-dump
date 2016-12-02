@@ -67,9 +67,9 @@ class PreciosClarosSpider(scrapy.Spider):
         if total > 1:
             for index in range(2, int(math.ceil(total/100.))):
                 productos_url = BASE_URL + 'productos?limit=100&offset=' + str(index * 100) + '&id_sucursal=' + sucursal_id
-            request = scrapy.Request(productos_url, callback=self.parse_content_productos)
-            request.meta['sucursal_id'] = sucursal_id
-            yield request
+            	request = scrapy.Request(productos_url, callback=self.parse_content_productos)
+            	request.meta['sucursal_id'] = sucursal_id
+            	yield request
 
     def parse_content_productos(self, response):
         sucursal_id = response.meta['sucursal_id']
