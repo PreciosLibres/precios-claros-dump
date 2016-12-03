@@ -1,2 +1,5 @@
 *.pyc
 .scrapy/
+preciosclaros/log.out
+preciosclaros/preciosclaros/logs/
+
