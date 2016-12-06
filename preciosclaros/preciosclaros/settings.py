@@ -5,19 +5,18 @@ BOT_NAME = 'preciosclaros'
 SPIDER_MODULES = ['preciosclaros.spiders']
 NEWSPIDER_MODULE = 'preciosclaros.spiders'
 
-
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 50
 
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 #DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
-CONCURRENT_REQUESTS_PER_DOMAIN = 30
-CONCURRENT_ITEMS = 30
+CONCURRENT_REQUESTS_PER_DOMAIN = 50
+# CONCURRENT_ITEMS = 50
 # CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
@@ -45,7 +44,7 @@ ITEM_PIPELINES = {
     'scrapycouchdb.CouchDBPipeline': 300,
 }
 
-COUCHDB_SERVER = 'http://127.0.0.1:5984/'
+COUCHDB_SERVER = 'http://r00t:tuviejaentanga01$@127.0.0.1:5984/'
 COUCHDB_DB = 'preciosclaros'
 COUCHDB_UNIQ_KEY = 'uuid'
 COUCHDB_IGNORE_FIELDS = []
