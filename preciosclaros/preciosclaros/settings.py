@@ -44,7 +44,7 @@ ITEM_PIPELINES = {
     'scrapycouchdb.CouchDBPipeline': 300,
 }
 
-COUCHDB_SERVER = 'http://r00t:tuviejaentanga01$@127.0.0.1:5984/'
+COUCHDB_SERVER = 'http://127.0.0.1:5984'
 COUCHDB_DB = 'preciosclaros'
 COUCHDB_UNIQ_KEY = 'uuid'
 COUCHDB_IGNORE_FIELDS = []
