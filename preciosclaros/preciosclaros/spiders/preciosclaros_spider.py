@@ -110,7 +110,7 @@ class PreciosClarosSpider(scrapy.Spider):
             yield items.ProductoSucursalItem(
                 uuid        = 'productosucursalitem-' + producto['id'] + '-' + sucursal_id,
                 producto_id = producto['id'],
-                sucursal_id = sucursal_id
+                sucursal_id = sucursal_id,
                 precio      = producto['precio'],
                 relevado_en = datetime.datetime.now().strftime("%m-%d-%Y")
             )
