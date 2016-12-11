@@ -34,8 +34,9 @@ class ProductoItem(scrapy.Item):
     marca = scrapy.Field()
 
 
-class ProductoSucursalPrecioItem(scrapy.Item):
+class ProductoSucursalItem(scrapy.Item):
     uuid = scrapy.Field()
     producto_id = scrapy.Field()
     sucursal_id = scrapy.Field()
     precio = scrapy.Field()
+    relevado_en = scrapy.Field()
