@@ -70,3 +70,5 @@ HTTPCACHE_ENABLED = False
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 #HTTPCACHE_STORAGE='scrapycouchdb.CouchDBCacheStorage'
+
+LOG_LEVEL = 'INFO'
